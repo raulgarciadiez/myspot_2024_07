@@ -4,6 +4,64 @@ from collections import defaultdict
 import pandas as pd
 import numpy as np
 
+def process_files(file_dict, var1, var2):
+    combined_df = pd.DataFrame()
+
+    for key, files in file_dict.items():
+        for file in files:
+            # Read each file into a DataFrame
+            df = pd.read_csv(file, comment='#', delimiter='\t')
+            
+            # Check if var1 and var2 exist in the DataFrame
+            if var1 not in df.columns or var2 not in df.columns:
+                raise ValueError(f"Columns '{var1}' or '{var2}' are not in the DataFrame")
+
+            # Create new column 'var1/var2'
+            df[f'{var1}/{var2}'] = df[var1] / df[var2]
+            
+            # Combine DataFrames
+            combined_df = pd.concat([combined_df, df], ignore_index=True)
+
+    # Group by 'monoE' and calculate mean and std
+    grouped = combined_df.groupby('monoE').agg({
+        var1: ['mean', 'std'],
+        var2: ['mean', 'std'],
+        f'{var1}/{var2}': ['mean', 'std']
+    }).reset_index()
+    
+    # Flatten the column hierarchy
+    grouped.columns = ['_'.join(col).strip() for col in grouped.columns.values]
+    grouped.rename(columns={'monoE_': 'monoE'}, inplace=True)
+    
+    return grouped
+
+def process_files_OLD(file_dict):
+    combined_df = pd.DataFrame()
+
+    for key, files in file_dict.items():
+        for file in files:
+            # Read each file into a DataFrame
+            df = pd.read_csv(file, comment='#', delimiter='\t')
+            
+            # Create new column 'roi1/mcaLt'
+            df['roi1/mcaLt'] = df['roi1'] / df['mcaLt']
+            
+            # Combine DataFrames based on 'monoE'
+            combined_df = pd.concat([combined_df, df], ignore_index=True)
+
+    # Group by 'monoE' and calculate mean and std
+    grouped = combined_df.groupby('monoE').agg({
+        'roi1': ['mean', 'std'],
+        'mcaLt': ['mean', 'std'],
+        'roi1/mcaLt': ['mean', 'std']
+    }).reset_index()
+    
+    # Flatten the column hierarchy
+    grouped.columns = ['_'.join(col).strip() for col in grouped.columns.values]
+    grouped.rename(columns={'monoE_': 'monoE'}, inplace=True)
+    
+    return grouped
+
 def load_monoE(file_path):
     """Load the monoE column from a file and return the starting value."""
     try:
