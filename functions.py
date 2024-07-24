@@ -157,7 +157,6 @@ def find_files_with_consecutive_numbers(folder_path, pattern):
     
     # List all files in the directory
     all_files = os.listdir(folder_path)
-    
     # Filter files matching the pattern
     matching_files = [f for f in all_files if pattern_regex.match(f)]
     
