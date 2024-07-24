@@ -1,4 +1,32 @@
 import re
+import os
+from collections import defaultdict
+import pandas as pd
+import numpy as np
+
+def load_monoE(file_path):
+    """Load the monoE column from a file and return the starting value."""
+    try:
+        df = pd.read_csv(file_path, comment='#', delimiter='\t')
+        if 'monoE' in df.columns and not df['monoE'].empty:
+            return df['monoE'].iloc[0]  # Return the starting value
+        else:
+            return None
+    except Exception as e:
+        print(f"Error reading file {file_path}: {e}")
+        return None
+
+def group_files_by_start(files):
+    """Group files by their starting monoE values."""
+    starting_values = defaultdict(list)
+    
+    # Extract starting values for each file
+    for file in files:
+        start_value = load_monoE(file)
+        if start_value is not None:
+            starting_values[start_value].append(file)
+    
+    return dict(starting_values)
 
 def read_esrf_spec_file(file_path):
     with open(file_path, 'r') as file:
@@ -63,3 +91,45 @@ def save_scan_to_ascii(scan_data, file_path):
         # Write data rows
         for row in scan_data['data']:
             file.write('\t'.join(row) + '\n')
+
+
+def find_files_with_consecutive_numbers(folder_path, pattern):
+    # Define the regex pattern to match the file names and extract numbers
+    pattern_regex = re.compile(pattern)
+    
+    # List all files in the directory
+    all_files = os.listdir(folder_path)
+    
+    # Filter files matching the pattern
+    matching_files = [f for f in all_files if pattern_regex.match(f)]
+    
+    # Extract numbers from the filenames
+    numbers = []
+    file_dict = {}
+    
+    for file in matching_files:
+        match = re.search(r'(\d+)', file)
+        if match:
+            num = int(match.group(1))
+            numbers.append(num)
+            file_dict[num] = file
+    
+    # Sort numbers to find consecutive sequences
+    numbers.sort()
+    
+    # Find and filter out only strictly consecutive sequences
+    consecutive_files = []
+    i = 0
+    while i < len(numbers):
+        consecutive = [numbers[i]]
+        while i < len(numbers) - 1 and numbers[i + 1] == numbers[i] + 1:
+            consecutive.append(numbers[i + 1])
+            i += 1
+        # Add files corresponding to the consecutive numbers
+        if len(consecutive) > 1:  # Ensure at least a pair of consecutive numbers
+            for num in consecutive:
+                consecutive_files.append(file_dict[num])
+        i += 1
+    
+    return sorted(consecutive_files, key=lambda x: int(re.search(r'\d+', x).group()))
+
