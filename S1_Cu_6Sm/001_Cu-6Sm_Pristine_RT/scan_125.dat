@@ -1,0 +1,9 @@
+# Scan number: 125
+# Command: eigerloopscan 1 60 0
+# Date: Wed Jul 24 17:41:45 2024;
+# date: Wed Jul 24 17:41:45 2024;
+# U You have following Eiger Directory and BaseFilename: 
+# U Following are the MOTOR POSITION: 
+# C Wed Jul 24 17: 48:30 2024.  do ./2023-07_EXAFS.mac.
+Time	Epoch	sec	no1	no2	izero	RCur	enc_det	K1_1	K1_2	"Counter 8"	"Counter 9"	ionch1	mcaRt	mcaDt	mcaLt	mca	roi1	roi2	roi3	roi4	roi5	roi6	ctm	ctran	LST1	LST2	E_det	mcaLt1	mcaLt2	mcaLt3	mcaLt4	mcaLt5	mcaLt6	mcaLt7	mcaLt8	AS_RC	AS_DM	AS_IC	AS_IC1	cyber	diode1	diode1	eiger_ctime	eiger_data_filename	eiger_data_file_Nr	first_image_Nr
+7.15256e-06	86405706	60	0	0	0	296.64027	6.3070137	-5.115908e-13	2.536922e-10	-1790.667	7.7091023e+08	7.9917542e+08	60.011763	57.868096	25.284098	1043289	6266	8901	644978	58151	61934	411	0	0	16.997457	0	17.996662	0	0	0	0	0	0	297.846	-5.22782e-13	297.284	-4.54897e-13	2.56222e-10	0	702	-1989.1729	-1989.1729	60	2024-07-23_001_Cu-6Sm_Pristine_RT_000125	0	1

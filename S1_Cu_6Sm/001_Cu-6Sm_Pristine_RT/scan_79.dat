@@ -1,0 +1,6 @@
+# Scan number: 79
+# Command: ascan monoE 5.673 5.703 20 2
+# Date: Wed Jul 24 12:27:53 2024
+# date: Wed Jul 24 12:27:53 2024
+# C Wed Jul 24 12: 28:30 2024.  do ./2023-07_EXAFS.mac.
+monoE	monobr	cr2latr	cr2vetr	H	K	L	Epoch	sec	no1	no2	izero	RCur	enc_det	K1_1	K1_2	"Counter 8"	"Counter 9"	ionch1	mcaRt	mcaDt	mcaLt	mca	roi1	roi2	roi3	roi4	roi5	roi6	ctm	ctran	LST1	LST2	E_det	mcaLt1	mcaLt2	mcaLt3	mcaLt4	mcaLt5	mcaLt6	mcaLt7	mcaLt8	AS_RC	AS_DM	AS_IC	AS_IC1	cyber	diode1	diode1

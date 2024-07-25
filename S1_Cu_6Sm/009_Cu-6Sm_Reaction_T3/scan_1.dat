@@ -1,0 +1,9 @@
+# Scan number: 1
+# Command: eigerloopscan 1 60 0
+# Date: Thu Jul 25 06:41:09 2024;
+# date: Thu Jul 25 06:41:09 2024;
+# U You have following Eiger Directory and BaseFilename: 
+# U Following are the MOTOR POSITION: 
+# C Thu Jul 25 06: 43:24 2024.  do ./2023-07_EXAFS.mac.
+Time	Epoch	sec	no1	no2	izero	RCur	enc_det	K1_1	K1_2	"Counter 8"	"Counter 9"	ionch1	mcaRt	mcaDt	mcaLt	mca	roi1	roi2	roi3	roi4	roi5	roi6	ctm	ctran	LST1	LST2	E_det	mcaLt1	mcaLt2	mcaLt3	mcaLt4	mcaLt5	mcaLt6	mcaLt7	mcaLt8	AS_RC	AS_DM	AS_IC	AS_IC1	cyber	diode1	diode1	eiger_ctime	eiger_data_filename	eiger_data_file_Nr	first_image_Nr
+6.91414e-06	86452424	60	0	0	0	296.50146	6.3095137	-5.57776e-13	1.574145e-09	-1790.667	7.7091023e+08	4.9588359e+09	60.012002	69.169034	18.50228	1057354	7171	9867	685732	33989	37715	426	0	0	16.997457	0	17.98956	0	0	0	0	0	0	297.846	-5.22782e-13	296.836	-5.34967e-13	1.57201e-09	0	586	-2168.7507	-2168.7507	60	2024-07-25_009_Cu-6Sm_Reaction_T3_000001	0	1
