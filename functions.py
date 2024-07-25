@@ -22,7 +22,6 @@ def process_files(file_dict, var1, var2):
 
             # Create new column 'var1/var2'
             df[f'{var1}/{var2}'] = df[var1] / df[var2]
-            print (file, df.columns)
             # Combine DataFrames
             combined_df = pd.concat([combined_df, df], ignore_index=True)
 
