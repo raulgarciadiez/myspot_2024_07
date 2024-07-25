@@ -11,14 +11,18 @@ def process_files(file_dict, var1, var2):
         for file in files:
             # Read each file into a DataFrame
             df = pd.read_csv(file, comment='#', delimiter='\t')
-            
+            if 'monoE' not in df.columns:
+                # Check if the DataFrame has a column called 'Energy'
+                if 'Energy' in df.columns:
+                    # Rename the column 'Energy' to 'monoE'
+                    df.rename(columns={'Energy': 'monoE'}, inplace=True)
             # Check if var1 and var2 exist in the DataFrame
             if var1 not in df.columns or var2 not in df.columns:
                 raise ValueError(f"Columns '{var1}' or '{var2}' are not in the DataFrame")
 
             # Create new column 'var1/var2'
             df[f'{var1}/{var2}'] = df[var1] / df[var2]
-            
+            print (file, df.columns)
             # Combine DataFrames
             combined_df = pd.concat([combined_df, df], ignore_index=True)
 
@@ -62,12 +66,15 @@ def process_files_OLD(file_dict):
     
     return grouped
 
-def load_monoE(file_path):
+def load_energy(file_path):
     """Load the monoE column from a file and return the starting value."""
     try:
         df = pd.read_csv(file_path, comment='#', delimiter='\t')
         if 'monoE' in df.columns and not df['monoE'].empty:
             return df['monoE'].iloc[0]  # Return the starting value
+        elif 'Energy' in df.columns and not df['Energy'].empty:
+            print ("EXAFS file - ", file_path)
+            return df['Energy'].iloc[0]  # Return the starting value
         else:
             return None
     except Exception as e:
@@ -80,7 +87,7 @@ def group_files_by_start(files):
     
     # Extract starting values for each file
     for file in files:
-        start_value = load_monoE(file)
+        start_value = load_energy(file)
         if start_value is not None:
             starting_values[start_value].append(file)
     
@@ -119,6 +126,7 @@ def read_esrf_spec_file(file_path):
         elif line.startswith('#L') and current_scan is not None:
             # Column labels
             column_labels = line[2:].strip().split('  ')  # Assume double space separation
+            column_labels = [label for label in column_labels if label.strip()]
             current_scan['columns'] = column_labels
         elif line.startswith('#') and current_scan is not None:
             # Other metadata
