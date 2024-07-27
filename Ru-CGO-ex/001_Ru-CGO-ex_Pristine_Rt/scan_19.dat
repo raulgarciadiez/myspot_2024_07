@@ -1,0 +1,7 @@
+# Scan number: 19
+# Command: acquire 10 10 0
+# Date: Sat Jul 27 05:16:36 2024
+# date: Sat Jul 27 05:16:36 2024
+# C Sat Jul 27 05: 21:43 2024.  do ./2023-07_EXAFS.mac.
+Time	Epoch	sec	no1	no2	izero	RCur	enc_det	K1_1	K1_2	"Counter 8"	"Counter 9"	ionch1	mcaRt	mcaDt	mcaLt	mca	roi1	roi2	roi3	roi4	roi5	roi6	ctm	ctran	LST1	LST2	E_det	mcaLt1	mcaLt2	mcaLt3	mcaLt4	mcaLt5	mcaLt6	mcaLt7	mcaLt8	AS_RC	AS_DM	AS_IC	AS_IC1	cyber	diode1	diode1
+7.15256e-06	86620088	10	0	0	0	297.63094	5.6771113	-7.496226e-13	1.172396e-13	-1790.667	7.7091023e+08	477242.46	10.011968	0.072092917	10.00475	0	0	0	0	0	0	0	0	0	16.997457	0	19.98581	0	0	0	0	0	0	297.846	-5.22782e-13	297.675	-7.43701e-13	9.74459e-14	0	122	-3442.8902	-3442.8902

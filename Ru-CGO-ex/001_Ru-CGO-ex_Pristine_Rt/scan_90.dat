@@ -1,0 +1,8 @@
+# Scan number: 90
+# Command: eigerloopscan 1 30 0
+# Date: Sat Jul 27 12:36:59 2024;
+# date: Sat Jul 27 12:36:59 2024;
+# U You have following Eiger Directory and BaseFilename: 
+# U Following are the MOTOR POSITION: 
+Time	Epoch	sec	no1	no2	izero	RCur	enc_det	K1_1	K1_2	"Counter 8"	"Counter 9"	ionch1	mcaRt	mcaDt	mcaLt	mca	roi1	roi2	roi3	roi4	roi5	roi6	ctm	ctran	LST1	LST2	E_det	mcaLt1	mcaLt2	mcaLt3	mcaLt4	mcaLt5	mcaLt6	mcaLt7	mcaLt8	AS_RC	AS_DM	AS_IC	AS_IC1	cyber	diode1	diode1	eiger_ctime	eiger_data_filename	eiger_data_file_Nr	first_image_Nr
+5.96046e-06	86646531	30	0	0	0	296.5759	6.3095137	-7.709389e-13	2.446399e-10	-1790.667	7.7091023e+08	7.7065907e+08	30.011719	21.171174	23.657885	211830	6782	5898	4980	13182	11358	12	0	0	16.997457	0	17.98956	0	0	0	0	0	0	297.846	-5.22782e-13	296.594	-6.94224e-13	2.44321e-10	0	313	-2997.573	-2997.573	30	2024-07-27_001_Ru-CGO-ex_Pristine_Rt_000090	0	1

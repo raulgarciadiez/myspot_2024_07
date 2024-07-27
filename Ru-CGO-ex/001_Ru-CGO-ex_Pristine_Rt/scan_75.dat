@@ -1,0 +1,6 @@
+# Scan number: 75
+# Command: acquire 10 10 0
+# Date: Sat Jul 27 11:13:41 2024
+# date: Sat Jul 27 11:13:41 2024
+Time	Epoch	sec	no1	no2	izero	RCur	enc_det	K1_1	K1_2	"Counter 8"	"Counter 9"	ionch1	mcaRt	mcaDt	mcaLt	mca	roi1	roi2	roi3	roi4	roi5	roi6	ctm	ctran	LST1	LST2	E_det	mcaLt1	mcaLt2	mcaLt3	mcaLt4	mcaLt5	mcaLt6	mcaLt7	mcaLt8	AS_RC	AS_DM	AS_IC	AS_IC1	cyber	diode1	diode1
+7.15256e-06	86641513	10	0	0	0	297.27242	19.934963	2.231353e-10	5.403322e-10	-1790.667	7.7091023e+08	2.7582673e+08	10.012038	5.1387773	9.4975414	6784	805	4011	26	2223	51	230	0	0	16.997457	0	5.7985687	0	0	0	0	0	0	297.846	-5.22782e-13	297.307	2.2171e-10	5.42834e-10	0	119	830364.25	830364.25
