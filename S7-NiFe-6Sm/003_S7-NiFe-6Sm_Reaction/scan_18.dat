@@ -1,0 +1,8 @@
+# Scan number: 18
+# Command: eigerloopscan 1 60 0
+# Date: Mon Jul 29 05:55:43 2024;
+# date: Mon Jul 29 05:55:43 2024;
+# U You have following Eiger Directory and BaseFilename: 
+# U Following are the MOTOR POSITION: 
+Time	Epoch	sec	no1	no2	izero	RCur	enc_det	K1_1	K1_2	"Counter 8"	"Counter 9"	ionch1	mcaRt	mcaDt	mcaLt	mca	roi1	roi2	roi3	roi4	roi5	roi6	ctm	ctran	LST1	LST2	E_det	mcaLt1	mcaLt2	mcaLt3	mcaLt4	mcaLt5	mcaLt6	mcaLt7	mcaLt8	AS_RC	AS_DM	AS_IC	AS_IC1	cyber	diode1	diode1	eiger_ctime	eiger_data_filename	eiger_data_file_Nr	first_image_Nr
+6.91414e-06	86795323	60	0	0	0	296.5241	6.3120137	-7.386161e-13	2.145022e-10	-1790.667	7.7091023e+08	6.7571997e+08	60.011846	34.254607	39.455024	794553	9522	12784	66889	284970	79621	32	0	0	16.997457	0	17.982463	0	0	0	0	0	0	297.846	-5.22782e-13	296.766	-7.50684e-13	2.12898e-10	0	2321	-2871.8952	-2871.8952	60	2024-07-29_003_S7-NiFe-6Sm_Reaction_000018	0	1

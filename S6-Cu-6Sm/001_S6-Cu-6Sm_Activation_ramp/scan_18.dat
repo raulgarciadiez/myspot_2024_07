@@ -1,0 +1,8 @@
+# Scan number: 18
+# Command: eigerloopscan 1 10 0
+# Date: Sun Jul 28 17:29:23 2024;
+# date: Sun Jul 28 17:29:23 2024;
+# U You have following Eiger Directory and BaseFilename: 
+# U Following are the MOTOR POSITION: 
+Time	Epoch	sec	no1	no2	izero	RCur	enc_det	K1_1	K1_2	"Counter 8"	"Counter 9"	ionch1	mcaRt	mcaDt	mcaLt	mca	roi1	roi2	roi3	roi4	roi5	roi6	ctm	ctran	LST1	LST2	E_det	mcaLt1	mcaLt2	mcaLt3	mcaLt4	mcaLt5	mcaLt6	mcaLt7	mcaLt8	AS_RC	AS_DM	AS_IC	AS_IC1	cyber	diode1	diode1	eiger_ctime	eiger_data_filename	eiger_data_file_Nr	first_image_Nr
+7.15256e-06	86750456	10	0	0	0	296.93754	12.693537	-7.110557e-13	8.029026e-10	-1790.667	7.7091023e+08	5.6865027e+08	10.011817	4.0708534	9.6042509	72	1	1	52	0	0	0	0	0	16.997457	0	8.9973398	0	0	0	0	0	0	297.846	-5.22782e-13	296.971	-6.1073e-13	8.04065e-10	0	208	-1908.5513	-1908.5513	10	2024-07-28_001_S6-Cu-6Sm_Activation_ramp_000018	0	1

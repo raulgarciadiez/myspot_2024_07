@@ -1,0 +1,6 @@
+# Scan number: 1
+# Command: ascan mz -3.48 0.12 20 1
+# Date: Sun Jul 28 01:57:24 2024
+# date: Sun Jul 28 01:57:24 2024
+mz	H	K	L	Epoch	sec	no1	no2	izero	RCur	enc_det	K1_1	K1_2	"Counter 8"	"Counter 9"	ionch1	mcaRt	mcaDt	mcaLt	mca	roi1	roi2	roi3	roi4	roi5	roi6	ctm	ctran	LST1	LST2	E_det	mcaLt1	mcaLt2	mcaLt3	mcaLt4	mcaLt5	mcaLt6	mcaLt7	mcaLt8	AS_RC	AS_DM	AS_IC	AS_IC1	cyber	diode1	diode1
+0.12	0	0	0	86694582	1	0	0	0	296.48674	5.124709	-9.094947e-13	6.679102e-13	-1790.667	7.7091023e+08	3485889.6	1.0119104	0.034469455	1.0115616	1	0	0	0	0	0	0	0	0	16.997457	0	22.133409	0	0	0	0	0	0	297.846	-5.22782e-13	296.494	-8.91731e-13	6.46594e-13	0	10	-4956.9228	-4956.9228
