@@ -1,0 +1,8 @@
+# Scan number: 24
+# Command: eigerloopscan 1 120 0
+# Date: Sat Jul 27 17:09:57 2024;
+# date: Sat Jul 27 17:09:57 2024;
+# U You have following Eiger Directory and BaseFilename: 
+# U Following are the MOTOR POSITION: 
+# C Sat Jul 27 17: 14:06 2024.  Scan aborted after 0 points.
+Time	Epoch	sec	no1	no2	izero	RCur	enc_det	K1_1	K1_2	"Counter 8"	"Counter 9"	ionch1	mcaRt	mcaDt	mcaLt	mca	roi1	roi2	roi3	roi4	roi5	roi6	ctm	ctran	LST1	LST2	E_det	mcaLt1	mcaLt2	mcaLt3	mcaLt4	mcaLt5	mcaLt6	mcaLt7	mcaLt8	AS_RC	AS_DM	AS_IC	AS_IC1	cyber	diode1	diode1	eiger_ctime	eiger_data_filename	eiger_data_file_Nr	first_image_Nr

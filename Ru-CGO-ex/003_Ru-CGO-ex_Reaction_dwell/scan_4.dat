@@ -1,0 +1,8 @@
+# Scan number: 4
+# Command: eigerloopscan 1 60 0
+# Date: Sat Jul 27 14:27:12 2024;
+# date: Sat Jul 27 14:27:12 2024;
+# U You have following Eiger Directory and BaseFilename: 
+# U Following are the MOTOR POSITION: 
+Time	Epoch	sec	no1	no2	izero	RCur	enc_det	K1_1	K1_2	"Counter 8"	"Counter 9"	ionch1	mcaRt	mcaDt	mcaLt	mca	roi1	roi2	roi3	roi4	roi5	roi6	ctm	ctran	LST1	LST2	E_det	mcaLt1	mcaLt2	mcaLt3	mcaLt4	mcaLt5	mcaLt6	mcaLt7	mcaLt8	AS_RC	AS_DM	AS_IC	AS_IC1	cyber	diode1	diode1	eiger_ctime	eiger_data_filename	eiger_data_file_Nr	first_image_Nr
+6.91414e-06	86653176	60	0	0	0	297.04414	5.092209	-9.094947e-13	5.400125e-13	-1790.667	7.7091023e+08	2861561.4	60.011446	9.3643448	54.391767	2383	16	12	9	31	23	699	0	0	16.997457	0	22.274295	0	0	0	0	0	0	297.846	-5.22782e-13	297.278	-8.26391e-13	5.10576e-13	0	793	-5010.2924	-5010.2924	60	2024-07-27_003_Ru-CGO-ex_Reaction_dwell_000004	0	1

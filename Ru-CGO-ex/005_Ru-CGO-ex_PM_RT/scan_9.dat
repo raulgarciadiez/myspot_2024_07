@@ -1,0 +1,7 @@
+# Scan number: 9
+# Command: ascan mz -3.48 0.12 20 1
+# Date: Sun Jul 28 00:11:15 2024
+# date: Sun Jul 28 00:11:15 2024
+# C Sun Jul 28 00: 12:57 2024.  do ./2023-07_EXAFS.mac.
+mz	H	K	L	Epoch	sec	no1	no2	izero	RCur	enc_det	K1_1	K1_2	"Counter 8"	"Counter 9"	ionch1	mcaRt	mcaDt	mcaLt	mca	roi1	roi2	roi3	roi4	roi5	roi6	ctm	ctran	LST1	LST2	E_det	mcaLt1	mcaLt2	mcaLt3	mcaLt4	mcaLt5	mcaLt6	mcaLt7	mcaLt8	AS_RC	AS_DM	AS_IC	AS_IC1	cyber	diode1	diode1
+0.12	0	0	0	86688213	1	0	0	0	296.50578	16.142951	3.703738e-07	1.620698e-09	-1790.667	7.7091023e+08	8.8979478e+08	1.0119277	4.9743318	0.96159104	691	0	1	0	6	17	0	0	0	16.997457	0	7.1107676	0	0	0	0	0	0	297.846	-5.22782e-13	296.506	3.69941e-07	1.61898e-09	0	11	1.1695902e+09	1.1695902e+09

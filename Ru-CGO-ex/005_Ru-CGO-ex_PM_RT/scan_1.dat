@@ -1,0 +1,9 @@
+# Scan number: 1
+# Command: eigerloopscan 1 30 0
+# Date: Sat Jul 27 23:42:10 2024;
+# date: Sat Jul 27 23:42:10 2024;
+# U You have following Eiger Directory and BaseFilename: 
+# U Following are the MOTOR POSITION: 
+# C Sat Jul 27 23: 43:50 2024.  do ./2023-07_EXAFS.mac.
+Time	Epoch	sec	no1	no2	izero	RCur	enc_det	K1_1	K1_2	"Counter 8"	"Counter 9"	ionch1	mcaRt	mcaDt	mcaLt	mca	roi1	roi2	roi3	roi4	roi5	roi6	ctm	ctran	LST1	LST2	E_det	mcaLt1	mcaLt2	mcaLt3	mcaLt4	mcaLt5	mcaLt6	mcaLt7	mcaLt8	AS_RC	AS_DM	AS_IC	AS_IC1	cyber	diode1	diode1	eiger_ctime	eiger_data_filename	eiger_data_file_Nr	first_image_Nr
+6.91414e-06	86686463	30	0	0	0	297.21318	6.3120137	-9.698908e-13	1.694964e-10	-1790.667	7.7091023e+08	5.3394372e+08	30.011817	17.364631	24.800376	163342	5148	4701	3912	10222	8742	4	0	0	16.997457	0	17.982463	0	0	0	0	0	0	297.846	-5.22782e-13	297.49	-8.00308e-13	1.69056e-10	0	294	-3771.14	-3771.14	30	2024-07-27_005_Ru-CGO-ex_PM_RT_000001	0	1

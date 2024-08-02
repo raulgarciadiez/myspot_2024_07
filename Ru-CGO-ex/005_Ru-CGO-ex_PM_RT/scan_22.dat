@@ -1,0 +1,8 @@
+# Scan number: 22
+# Command: eigerloopscan 1 60 0
+# Date: Sun Jul 28 01:31:01 2024;
+# date: Sun Jul 28 01:31:01 2024;
+# U You have following Eiger Directory and BaseFilename: 
+# U Following are the MOTOR POSITION: 
+Time	Epoch	sec	no1	no2	izero	RCur	enc_det	K1_1	K1_2	"Counter 8"	"Counter 9"	ionch1	mcaRt	mcaDt	mcaLt	mca	roi1	roi2	roi3	roi4	roi5	roi6	ctm	ctran	LST1	LST2	E_det	mcaLt1	mcaLt2	mcaLt3	mcaLt4	mcaLt5	mcaLt6	mcaLt7	mcaLt8	AS_RC	AS_DM	AS_IC	AS_IC1	cyber	diode1	diode1	eiger_ctime	eiger_data_filename	eiger_data_file_Nr	first_image_Nr
+7.86781e-06	86693011	60	0	0	0	297.94781	5.134709	-8.206769e-13	7.496226e-13	-1790.667	7.7091023e+08	3894044.6	60.01217	7.9683411	55.230196	749	35	33	16	83	72	69	0	0	16.997457	0	22.090418	0	0	0	0	0	0	297.846	-5.22782e-13	297.703	-8.30111e-13	6.5762e-13	0	680	-4458.1182	-4458.1182	60	2024-07-27_005_Ru-CGO-ex_PM_RT_000022	0	1
