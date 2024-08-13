@@ -7,6 +7,8 @@ from scipy.signal import savgol_filter
 
 def process_files(file_dict, var1, var2):
     combined_df = pd.DataFrame()
+    original_data_list = []
+    modified_data_list = []
 
     for key, files in file_dict.items():
         for file in files:
@@ -17,16 +19,32 @@ def process_files(file_dict, var1, var2):
                 if 'Energy' in df.columns:
                     # Rename the column 'Energy' to 'monoE'
                     df.rename(columns={'Energy': 'monoE'}, inplace=True)
+                    
+            # Check if var1 and var2 exist in the DataFrame
+            if var1 not in df.columns or var2 not in df.columns:
+                raise ValueError(f"Columns '{var1}' or '{var2}' are not in the DataFrame")
+
+            # Store original data for later plotting
+            original_data = df[[var1, var2]].copy()
+            original_data['source'] = 'original'
+            original_data_list.append(original_data)
             
             # Replace outliers in var1 and var2
             df[var1] = replace_outliers_with_average(df[var1])
             df[var2] = replace_outliers_with_average(df[var2])
 
-            # Create new column 'var1/var2'
-            df[f'{var1}/{var2}'] = df[var1] / df[var2]
-
-            # Combine DataFrames
+            # Store modified data for later plotting
+            modified_data = df[[var1, var2]].copy()
+            modified_data['source'] = 'modified'
+            modified_data_list.append(modified_data)
+            
+            # Combine modified DataFrame into combined_df
             combined_df = pd.concat([combined_df, df], ignore_index=True)
+
+    # Concatenate all original and modified data for plotting
+    combined_original = pd.concat(original_data_list, ignore_index=True)
+    combined_modified = pd.concat(modified_data_list, ignore_index=True)
+    combined_data = pd.concat([combined_original, combined_modified], ignore_index=True)
 
     # Group by 'monoE' and calculate mean and std
     grouped = combined_df.groupby('monoE').agg({
@@ -38,7 +56,7 @@ def process_files(file_dict, var1, var2):
     grouped.columns = ['_'.join(col).strip() for col in grouped.columns.values]
     grouped.rename(columns={'monoE_': 'monoE'}, inplace=True)
 
-    return grouped
+    return grouped, combined_data  # Return combined_data for plotting
 
 
 def process_files2(file_dict, var1, var2):
