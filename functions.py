@@ -25,6 +25,9 @@ def process_files(file_dict, var1, var2):
             df[f'{var1}/{var2}'] = df[var1] / df[var2]
             # Combine DataFrames
             combined_df = pd.concat([combined_df, df], ignore_index=True)
+    
+    # Apply Z-score based outlier removal
+    combined_df = remove_outliers(combined_df, [var1, var2, f'{var1}/{var2}'], z_threshold)
 
     # Group by 'monoE' and calculate mean and std
     grouped = combined_df.groupby('monoE').agg({
@@ -38,6 +41,15 @@ def process_files(file_dict, var1, var2):
     grouped.rename(columns={'monoE_': 'monoE'}, inplace=True)
     
     return grouped
+
+def remove_outliers(df, columns, z_threshold=3):
+    """Remove outliers from a DataFrame based on Z-score."""
+    for column in columns:
+        df['z_score'] = np.abs((df[column] - df[column].mean()) / df[column].std(ddof=0))
+        df = df[df['z_score'] < z_threshold]
+    df = df.drop(columns=['z_score'])  # Drop the z_score column after filtering
+    return df
+
 
 def process_files_OLD(file_dict):
     combined_df = pd.DataFrame()
