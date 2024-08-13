@@ -59,7 +59,7 @@ def process_files(file_dict, var1, var2):
     print(combined_data.head())  # Print first few rows
     
     # Return both the grouped DataFrame and combined data for plotting
-    return grouped, combined_data
+    return grouped#, combined_data
 
 
 
