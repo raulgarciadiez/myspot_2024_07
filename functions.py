@@ -3,6 +3,7 @@ import os
 from collections import defaultdict
 import pandas as pd
 import numpy as np
+from scipy.signal import savgol_filter
 
 def process_files(file_dict, var1, var2):
     combined_df = pd.DataFrame()
@@ -198,5 +199,39 @@ def find_files_with_consecutive_numbers(folder_path, pattern):
     return sorted(consecutive_files, key=lambda x: int(re.search(r'\d+', x).group()))
 
 
+def find_edge_position(energy, intensity, smoothing_window=11, polyorder=3):
+    """
+    Finds the edge position in the given energy vs. intensity data.
 
+    Parameters:
+    - energy: numpy array of energy values
+    - intensity: numpy array of intensity values
+    - smoothing_window: window size for Savitzky-Golay filter (default is 11)
+    - polyorder: polynomial order for Savitzky-Golay filter (default is 3)
+
+    Returns:
+    - edge_position_idx: index of the detected edge position
+    """
+    # Step 1: Normalize the intensity data
+    normalized_data = intensity / np.max(intensity)
+    
+    # Optional: Smooth the data to reduce noise
+    #smoothed_data = savgol_filter(normalized_data, smoothing_window, polyorder)
+    
+    # Step 2: Calculate the first derivative
+    first_derivative = np.gradient(normalized_data)
+    
+    # Step 3: Find the index of the maximum in the first derivative
+    max_index = np.argmax(first_derivative)
+    
+    # Step 4: Calculate the second derivative
+    second_derivative = np.gradient(first_derivative)
+    
+    # Step 5: Find the zero-crossing in the second derivative near the maximum
+    zero_crossing_indices = np.where(np.diff(np.sign(second_derivative)))[0]
+    
+    # Find the zero-crossing closest to the maximum in the first derivative
+    edge_position_idx = zero_crossing_indices[np.abs(zero_crossing_indices - max_index).argmin()]
+    
+    return edge_position_idx
 
