@@ -52,7 +52,12 @@ def process_files(file_dict, var1, var2):
     # Flatten the column hierarchy
     grouped.columns = ['_'.join(col).strip() for col in grouped.columns.values]
     grouped.rename(columns={'monoE_': 'monoE'}, inplace=True)
-
+    
+    print("Grouped DataFrame:")
+    print(grouped.head())  # Print first few rows
+    print("Combined Data for Plotting:")
+    print(combined_data.head())  # Print first few rows
+    
     # Return both the grouped DataFrame and combined data for plotting
     return grouped, combined_data
 
