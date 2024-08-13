@@ -15,12 +15,9 @@ def process_files(file_dict, var1, var2):
             # Read each file into a DataFrame
             df = pd.read_csv(file, comment='#', delimiter='\t')
             if 'monoE' not in df.columns:
-                # Check if the DataFrame has a column called 'Energy'
                 if 'Energy' in df.columns:
-                    # Rename the column 'Energy' to 'monoE'
                     df.rename(columns={'Energy': 'monoE'}, inplace=True)
-                    
-            # Check if var1 and var2 exist in the DataFrame
+
             if var1 not in df.columns or var2 not in df.columns:
                 raise ValueError(f"Columns '{var1}' or '{var2}' are not in the DataFrame")
 
@@ -28,7 +25,7 @@ def process_files(file_dict, var1, var2):
             original_data = df[[var1, var2]].copy()
             original_data['source'] = 'original'
             original_data_list.append(original_data)
-            
+
             # Replace outliers in var1 and var2
             df[var1] = replace_outliers_with_average(df[var1])
             df[var2] = replace_outliers_with_average(df[var2])
@@ -37,11 +34,10 @@ def process_files(file_dict, var1, var2):
             modified_data = df[[var1, var2]].copy()
             modified_data['source'] = 'modified'
             modified_data_list.append(modified_data)
-            
-            # Combine modified DataFrame into combined_df
+
             combined_df = pd.concat([combined_df, df], ignore_index=True)
 
-    # Concatenate all original and modified data for plotting
+    # Combine original and modified data for plotting
     combined_original = pd.concat(original_data_list, ignore_index=True)
     combined_modified = pd.concat(modified_data_list, ignore_index=True)
     combined_data = pd.concat([combined_original, combined_modified], ignore_index=True)
@@ -53,10 +49,13 @@ def process_files(file_dict, var1, var2):
         f'{var1}/{var2}': ['mean', 'std']
     }).reset_index()
 
+    # Flatten the column hierarchy
     grouped.columns = ['_'.join(col).strip() for col in grouped.columns.values]
     grouped.rename(columns={'monoE_': 'monoE'}, inplace=True)
 
-    return grouped, combined_data  # Return combined_data for plotting
+    # Return both the grouped DataFrame and combined data for plotting
+    return grouped, combined_data
+
 
 
 def process_files2(file_dict, var1, var2):
@@ -97,26 +96,26 @@ def process_files2(file_dict, var1, var2):
     return grouped
 
 
-def replace_outliers_with_average(series):
-    """Replace outliers in a Pandas Series with the average of the adjacent values."""
-    # Calculate the IQR
-    Q1 = series.quantile(0.25)
-    Q3 = series.quantile(0.75)
+# Define your outlier replacement function
+def replace_outliers_with_average(column):
+    """Replace outliers in a column with the average of neighboring values."""
+    # Define outlier thresholds (for example using IQR)
+    Q1 = column.quantile(0.25)
+    Q3 = column.quantile(0.75)
     IQR = Q3 - Q1
     lower_bound = Q1 - 1.5 * IQR
     upper_bound = Q3 + 1.5 * IQR
 
-    # Create a mask for outliers
-    outliers = (series < lower_bound) | (series > upper_bound)
-
-    # Replace outliers with the average of neighbors
-    for i in range(1, len(series) - 1):
-        if outliers[i]:
-            # Calculate the average of the values before and after the outlier
-            average = (series[i - 1] + series[i + 1]) / 2
-            series[i] = average
-
-    return series
+    # Create a copy of the column to avoid modifying it in place
+    column = column.copy()
+    
+    # Replace outliers
+    for i in range(1, len(column) - 1):
+        if column[i] < lower_bound or column[i] > upper_bound:
+            # Replace with the average of the neighboring points
+            column[i] = (column[i - 1] + column[i + 1]) / 2
+    
+    return column
 
 def process_files_OLD(file_dict):
     combined_df = pd.DataFrame()
