@@ -5,7 +5,7 @@ import pandas as pd
 import numpy as np
 from scipy.signal import savgol_filter
 
-def process_files_no_spikes(file_dict, var1, var2):
+def process_files_no_spikes(file_dict, var1, var2, threshold= 0.25):
     combined_df = pd.DataFrame()
     original_data_list = []
     modified_data_list = []
@@ -25,10 +25,15 @@ def process_files_no_spikes(file_dict, var1, var2):
             #original_data = df[[var1, var2]].copy()
             #original_data['source'] = 'original'
             #original_data_list.append(original_data)
-
+            try:
+                print (np.array(df["monoE"])[40])
+            except IndexError:
+                pass
             # Replace outliers in var1 and var2
-            df[var1] = replace_outliers_with_average(df[var1])
-            df[var2] = replace_outliers_with_average(df[var2])
+            print (file, var1)
+            df[var1] = replace_outliers_with_average(df[var1],threshold)
+            print (file, var2)
+            df[var2] = replace_outliers_with_average(df[var2],threshold)
 
             ## Store modified data for later plotting
             #modified_data = df[[var1, var2]].copy()
@@ -98,28 +103,29 @@ def process_files(file_dict, var1, var2):
 
 
 # Define your outlier replacement function
-def replace_outliers_with_average(column):
+def replace_outliers_with_average(column, threshold):
     """Replace outliers in a column with the average of neighboring values."""
     # Define outlier thresholds (for example using IQR)
-    Q1 = column.quantile(0.25)
-    Q3 = column.quantile(0.75)
+
+    column_float = column.astype(float) 
+    Q1 = column_float.quantile(threshold)
+    Q3 = column_float.quantile(1-threshold)
     IQR = Q3 - Q1
     lower_bound = Q1 - 1.5 * IQR
     upper_bound = Q3 + 1.5 * IQR
-
-    column = column.astype(float) 
     
     # Create a copy of the column to avoid modifying it in place
-    column = column.copy()
+    #column = column.copy()
     
     # Replace outliers
-    for i in range(1, len(column) - 1):
-        if column[i] < lower_bound or column[i] > upper_bound:
+    for i in range(1, len(column_float) - 1):
+        if column_float[i] < lower_bound or column_float[i] > upper_bound:
+            print ("outlier -   -", i, column_float[i])
             # Replace with the average of the neighboring points
-            column[i] = (column[i - 1] + column[i + 1]) / 2
+            column_float[i] = (column_float[i - 1] + column_float[i + 1]) / 2
     
-    column = column.astype(float)
-    return column
+    #column = column.astype(float)
+    return column_float
 
 def process_files_OLD(file_dict):
     combined_df = pd.DataFrame()
