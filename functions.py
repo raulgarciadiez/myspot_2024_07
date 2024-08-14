@@ -35,7 +35,11 @@ def process_files(file_dict, var1, var2):
             modified_data['source'] = 'modified'
             modified_data_list.append(modified_data)
 
+            # Create new column 'var1/var2'
+            df[f'{var1}/{var2}'] = df[var1] / df[var2]
+            # Combine DataFrames
             combined_df = pd.concat([combined_df, df], ignore_index=True)
+            
 
     # Combine original and modified data for plotting
     combined_original = pd.concat(original_data_list, ignore_index=True)
@@ -52,12 +56,7 @@ def process_files(file_dict, var1, var2):
     # Flatten the column hierarchy
     grouped.columns = ['_'.join(col).strip() for col in grouped.columns.values]
     grouped.rename(columns={'monoE_': 'monoE'}, inplace=True)
-    
-    print("Grouped DataFrame:")
-    print(grouped.head())  # Print first few rows
-    print("Combined Data for Plotting:")
-    print(combined_data.head())  # Print first few rows
-    
+        
     # Return both the grouped DataFrame and combined data for plotting
     return grouped#, combined_data
 
@@ -110,10 +109,10 @@ def replace_outliers_with_average(column):
     IQR = Q3 - Q1
     lower_bound = Q1 - 1.5 * IQR
     upper_bound = Q3 + 1.5 * IQR
-
+    
+    column = column.astype(float)
     # Create a copy of the column to avoid modifying it in place
     column = column.copy()
-    column = column.astype(float)
     
     # Replace outliers
     for i in range(1, len(column) - 1):
