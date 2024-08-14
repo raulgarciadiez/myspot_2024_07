@@ -106,7 +106,8 @@ def replace_outliers_with_average(column):
     IQR = Q3 - Q1
     lower_bound = Q1 - 1.5 * IQR
     upper_bound = Q3 + 1.5 * IQR
-       
+
+    column = column.astype(float) 
     
     # Create a copy of the column to avoid modifying it in place
     column = column.copy()
@@ -117,7 +118,7 @@ def replace_outliers_with_average(column):
             # Replace with the average of the neighboring points
             column[i] = (column[i - 1] + column[i + 1]) / 2
     
-   
+    column = column.astype(float)
     return column
 
 def process_files_OLD(file_dict):
