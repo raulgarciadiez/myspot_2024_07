@@ -113,6 +113,7 @@ def replace_outliers_with_average(column):
 
     # Create a copy of the column to avoid modifying it in place
     column = column.copy()
+    column = column.astype(float)
     
     # Replace outliers
     for i in range(1, len(column) - 1):
