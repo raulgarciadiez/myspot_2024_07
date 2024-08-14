@@ -27,8 +27,8 @@ def process_files(file_dict, var1, var2):
             #original_data_list.append(original_data)
 
             # Replace outliers in var1 and var2
-            df[var1] = replace_outliers_with_average(df[var1])
-            df[var2] = replace_outliers_with_average(df[var2])
+            df[var1] = replace_outliers_with_average(df[var1]).astype(float)
+            df[var2] = replace_outliers_with_average(df[var2]).astype(float)
 
             ## Store modified data for later plotting
             #modified_data = df[[var1, var2]].copy()
@@ -83,10 +83,6 @@ def process_files2(file_dict, var1, var2):
             # Combine DataFrames
             combined_df = pd.concat([combined_df, df], ignore_index=True)
     
-    # Apply Z-score based outlier removal
-    #combined_df = remove_outliers(combined_df, [var1, var2, f'{var1}/{var2}'], z_threshold)
-    #combined_df = remove_outliers_iqr(combined_df, [var1, var2, f'{var1}/{var2}'])
-
     # Group by 'monoE' and calculate mean and std
     grouped = combined_df.groupby('monoE').agg({
         var1: ['mean', 'std'],
