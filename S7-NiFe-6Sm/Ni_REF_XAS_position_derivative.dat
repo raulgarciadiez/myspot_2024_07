@@ -1,4 +1,4 @@
-Reference,Edge Energy (eV)
-Ni metal,8333.6
-NiO,8346.8
-NiF2O4,8345.4
+Reference,Edge Energy (eV),Edge Energy (eV)_fit
+Ni metal,8333.6,8333.6
+NiO,8346.8,8346.8
+NiF2O4,8345.4,8345.4
