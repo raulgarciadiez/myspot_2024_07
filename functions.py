@@ -27,8 +27,8 @@ def process_files_no_spikes(file_dict, var1, var2):
             #original_data_list.append(original_data)
 
             # Replace outliers in var1 and var2
-            df[var1] = replace_outliers_with_average(df[var1]).astype(float)
-            df[var2] = replace_outliers_with_average(df[var2]).astype(float)
+            df[var1] = replace_outliers_with_average(df[var1])
+            df[var2] = replace_outliers_with_average(df[var2])
 
             ## Store modified data for later plotting
             #modified_data = df[[var1, var2]].copy()
@@ -79,10 +79,6 @@ def process_files(file_dict, var1, var2):
             if var1 not in df.columns or var2 not in df.columns:
                 raise ValueError(f"Columns '{var1}' or '{var2}' are not in the DataFrame")
             
-            ## Replace outliers in var1 and var2
-            #df[var1] = replace_outliers_with_average(df[var1])
-            #df[var2] = replace_outliers_with_average(df[var2])
-
             # Create new column 'var1/var2'
             df[f'{var1}/{var2}'] = df[var1] / df[var2]
             # Combine DataFrames
