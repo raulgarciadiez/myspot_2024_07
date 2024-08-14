@@ -5,7 +5,7 @@ import pandas as pd
 import numpy as np
 from scipy.signal import savgol_filter
 
-def process_files(file_dict, var1, var2):
+def process_files3(file_dict, var1, var2):
     combined_df = pd.DataFrame()
     original_data_list = []
     modified_data_list = []
@@ -62,7 +62,7 @@ def process_files(file_dict, var1, var2):
 
 
 
-def process_files2(file_dict, var1, var2):
+def process_files(file_dict, var1, var2):
     combined_df = pd.DataFrame()
 
     for key, files in file_dict.items():
@@ -74,9 +74,14 @@ def process_files2(file_dict, var1, var2):
                 if 'Energy' in df.columns:
                     # Rename the column 'Energy' to 'monoE'
                     df.rename(columns={'Energy': 'monoE'}, inplace=True)
+            
             # Check if var1 and var2 exist in the DataFrame
             if var1 not in df.columns or var2 not in df.columns:
                 raise ValueError(f"Columns '{var1}' or '{var2}' are not in the DataFrame")
+            
+            # Replace outliers in var1 and var2
+            df[var1] = replace_outliers_with_average(df[var1])
+            df[var2] = replace_outliers_with_average(df[var2])
 
             # Create new column 'var1/var2'
             df[f'{var1}/{var2}'] = df[var1] / df[var2]
