@@ -5,7 +5,7 @@ import pandas as pd
 import numpy as np
 from scipy.signal import savgol_filter
 
-def process_files3(file_dict, var1, var2):
+def process_files_no_spikes(file_dict, var1, var2):
     combined_df = pd.DataFrame()
     original_data_list = []
     modified_data_list = []
@@ -79,9 +79,9 @@ def process_files(file_dict, var1, var2):
             if var1 not in df.columns or var2 not in df.columns:
                 raise ValueError(f"Columns '{var1}' or '{var2}' are not in the DataFrame")
             
-            # Replace outliers in var1 and var2
-            df[var1] = replace_outliers_with_average(df[var1])
-            df[var2] = replace_outliers_with_average(df[var2])
+            ## Replace outliers in var1 and var2
+            #df[var1] = replace_outliers_with_average(df[var1])
+            #df[var2] = replace_outliers_with_average(df[var2])
 
             # Create new column 'var1/var2'
             df[f'{var1}/{var2}'] = df[var1] / df[var2]
@@ -110,8 +110,7 @@ def replace_outliers_with_average(column):
     IQR = Q3 - Q1
     lower_bound = Q1 - 1.5 * IQR
     upper_bound = Q3 + 1.5 * IQR
-    
-    column = column.astype(float)
+       
     
     # Create a copy of the column to avoid modifying it in place
     column = column.copy()
@@ -122,8 +121,7 @@ def replace_outliers_with_average(column):
             # Replace with the average of the neighboring points
             column[i] = (column[i - 1] + column[i + 1]) / 2
     
-    # Ensure the result is a float type (especially useful if other operations follow)
-    column = column.astype(float)
+   
     return column
 
 def process_files_OLD(file_dict):
