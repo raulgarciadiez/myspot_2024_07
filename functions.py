@@ -30,26 +30,13 @@ def process_files_no_spikes(file_dict, var1, var2, threshold= 0.25):
             except IndexError:
                 pass
             # Replace outliers in var1 and var2
-            print (file, var1)
             df[var1] = replace_outliers_with_average(df[var1],threshold)
-            print (file, var2)
             df[var2] = replace_outliers_with_average(df[var2],threshold)
-
-            ## Store modified data for later plotting
-            #modified_data = df[[var1, var2]].copy()
-            #modified_data['source'] = 'modified'
-            #modified_data_list.append(modified_data)
 
             # Create new column 'var1/var2'
             df[f'{var1}/{var2}'] = df[var1] / df[var2]
             # Combine DataFrames
             combined_df = pd.concat([combined_df, df], ignore_index=True)
-            
-
-    ## Combine original and modified data for plotting
-    #combined_original = pd.concat(original_data_list, ignore_index=True)
-    #combined_modified = pd.concat(modified_data_list, ignore_index=True)
-    #combined_data = pd.concat([combined_original, combined_modified], ignore_index=True)
 
     # Group by 'monoE' and calculate mean and std
     grouped = combined_df.groupby('monoE').agg({
@@ -63,9 +50,7 @@ def process_files_no_spikes(file_dict, var1, var2, threshold= 0.25):
     grouped.rename(columns={'monoE_': 'monoE'}, inplace=True)
         
     # Return both the grouped DataFrame and combined data for plotting
-    return grouped #, combined_data
-
-
+    return grouped 
 
 def process_files(file_dict, var1, var2):
     combined_df = pd.DataFrame()
@@ -108,14 +93,12 @@ def replace_outliers_with_average(column, threshold):
     # Define outlier thresholds (for example using IQR)
 
     column_float = column.astype(float) 
+    
     Q1 = column_float.quantile(threshold)
-    Q3 = column_float.quantile(1-threshold)
+    Q3 = column_float.quantile(1 - threshold)
     IQR = Q3 - Q1
     lower_bound = Q1 - 1.5 * IQR
     upper_bound = Q3 + 1.5 * IQR
-    
-    # Create a copy of the column to avoid modifying it in place
-    #column = column.copy()
     
     # Replace outliers
     for i in range(1, len(column_float) - 1):
@@ -124,7 +107,6 @@ def replace_outliers_with_average(column, threshold):
             # Replace with the average of the neighboring points
             column_float[i] = (column_float[i - 1] + column_float[i + 1]) / 2
     
-    #column = column.astype(float)
     return column_float
 
 def process_files_OLD(file_dict):
